@@ -22,8 +22,9 @@ Resources
     * Currently we have [the email summarising the organisational meeting](https://github.com/semorrison/hott-2017/blob/master/notes/week-1/organisational-meeting.md) and [notes from Feb 22](https://github.com/semorrison/hott-2017/blob/master/notes/week-1/2017-02-22_algebraic-topology.pdf).
 * To add content or files here, either
     * send them to Scott,
-    * create a github account and ask Scott for commit access, or
-    * create a github account and create a pull request.
+    * create a github account and ask Scott for commit access, 
+    * create a github account and create a pull request, or
+    * you can use the online LaTeX editor at SageMathCloud, which we've [hooked up to this repository](https://cloud.sagemath.com/projects/73ac273c-acff-45e1-b1ab-c4e55ae33e5f/files/hott-2017/). You'll need to create an account there and ask for access.
 * Let's try using the issues page here on github to keep track of questions we'd like to collectively think about. Scott has put up a first example, about the space of proofs that fg = gf in \pi_2(X). Please feel free to put anything up here, including basic questions asking for clarifications.
 
 Interactive theorem proving
