@@ -19,7 +19,7 @@ Resources
 * The [Homotopy type theory book](https://homotopytypetheory.org/book/).
 * A [course on HoTT at Carnegie-Mellon](http://www.cs.cmu.edu/~rwh/courses/hott/), including video lectures.
 * We will put up notes from each week's discussion here. Anyone who has notes, either handwritten or TeX'd can contribute them.
-    * Currently we just have [the email summarising the organisational meeting](https://github.com/semorrison/hott-2017/blob/master/notes/week-1/organisational-meeting.md). Adele has notes from Feb 22?
+    * Currently we have [the email summarising the organisational meeting](https://github.com/semorrison/hott-2017/blob/master/notes/week-1/organisational-meeting.md) and [notes from Feb 22](https://github.com/semorrison/hott-2017/blob/master/notes/week-1/22_2_algebraic-topology.tex).
 * To add content or files here, either
     * send them to Scott,
     * create a github account and ask Scott for commit access, or
