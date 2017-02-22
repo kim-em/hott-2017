@@ -5,19 +5,8 @@
 \usepackage{amssymb}
 \usepackage{mathrsfs}
 \DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
-\usepackage{graphicx}
-%\usepackage{geometry}
-\usepackage{hyperref}
-\DeclareGraphicsExtensions{.pdf,.png,.jpeg}
-%\usepackage{fancyhdr}
 \usepackage{mathtools}
-\usepackage{color}
-\usepackage{tikz}
-%\usepackage{pgfplots}
-\usepackage{fancyvrb}
-%\pgfplotsset{compat=1.14}
 \usepackage{enumitem}
-\usepackage{pgf,tikz}
 \usetikzlibrary{arrows}
 %\pagestyle{empty}
 \definecolor{zzttqq}{rgb}{0.6,0.2,0.}
@@ -37,21 +26,18 @@
 \newcommand{\FF}{\mathbb{F}}
 \newcommand{\curA}{\mathscr{A}}
 \newcommand{\curB}{\mathscr{B}}
-\newcommand{\curC}{\mathscr{C}}
-\newcommand{\curM}{\mathscr{M}}
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{enumitem}
+
+\newcommand{\sub}{\subseteq}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
 \newcommand{\of}{\circ}
-\newcommand{\XOR}{\otimes}
-\newcommand{\car}[1]{\overline{\overline{#1}}}
-\renewcommand{\Re}{\ensuremath{\operatorname{Re}}}
-\renewcommand{\Im}{\ensuremath{\operatorname{Im}}}
-\newcommand{\divides}{\bigm|}
-\newcommand{\notdivides}{%
-  \mathrel{\mkern.5mu % small adjustment
-    % superimpose \nmid to \big|
-    \ooalign{\hidewidth$\big|$\hidewidth\cr$\nmid$\cr}%
-  }%
-}
-\newcommand{\Res}{\text{Res}}
 \newcommand{\del}{\partial}
 \theoremstyle{definition}
 \newtheorem*{thm}{Theorem}
@@ -62,7 +48,6 @@
 \title{Homotopy Type Theory Notes: Concepts from Topology}
 \author{}
 \begin{document}
-%\thispagestyle{empty}
 \maketitle
 
 We start with a crash course in some concepts from topology.
