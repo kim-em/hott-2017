@@ -1,0 +1,255 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+\usepackage{graphicx}
+%\usepackage{geometry}
+\usepackage{hyperref}
+\DeclareGraphicsExtensions{.pdf,.png,.jpeg}
+%\usepackage{fancyhdr}
+\usepackage{mathtools}
+\usepackage{color}
+\usepackage{tikz}
+%\usepackage{pgfplots}
+\usepackage{fancyvrb}
+%\pgfplotsset{compat=1.14}
+\usepackage{enumitem}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+%\pagestyle{empty}
+\definecolor{zzttqq}{rgb}{0.6,0.2,0.}
+\clubpenalty8000
+\widowpenalty8000
+
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+%\pagestyle{fancy}
+\renewcommand{\d}{\ensuremath{\operatorname{d}}}
+\newcommand*{\Comb}[2]{{}^{#1}C_{#2}}%
+\newcommand{\sub}{\subseteq}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZP}{\mathbb{Z}_p}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\curA}{\mathscr{A}}
+\newcommand{\curB}{\mathscr{B}}
+\newcommand{\curC}{\mathscr{C}}
+\newcommand{\curM}{\mathscr{M}}
+\newcommand{\of}{\circ}
+\newcommand{\XOR}{\otimes}
+\newcommand{\car}[1]{\overline{\overline{#1}}}
+\renewcommand{\Re}{\ensuremath{\operatorname{Re}}}
+\renewcommand{\Im}{\ensuremath{\operatorname{Im}}}
+\newcommand{\divides}{\bigm|}
+\newcommand{\notdivides}{%
+  \mathrel{\mkern.5mu % small adjustment
+    % superimpose \nmid to \big|
+    \ooalign{\hidewidth$\big|$\hidewidth\cr$\nmid$\cr}%
+  }%
+}
+\newcommand{\Res}{\text{Res}}
+\newcommand{\del}{\partial}
+\theoremstyle{definition}
+\newtheorem*{thm}{Theorem}
+\newtheorem*{defn}{Definition}
+\newtheorem*{exer}{Exercise}
+\newtheorem*{example}{Example}
+
+\title{Homotopy Type Theory Notes: Concepts from Topology}
+\author{}
+\begin{document}
+%\thispagestyle{empty}
+\maketitle
+
+We start with a crash course in some concepts from topology.
+
+\section{The Fundamental Group}
+
+First we set up some definitions.
+
+\begin{defn}
+A \emph{topological space} $(X, \Gamma)$ is a non-empty set $X$ and a collection of subsets of $X$, $\Gamma$, such that $\emptyset, X\in \Gamma$ and $\Gamma$ is closed under arbitrary unions and finite intersections.
+We say that $\Gamma$ is a \emph{topology} for $X$, and call the members of $\Gamma$ \emph{open sets}.
+\end{defn}
+
+\begin{defn}
+Given topological spaces $(X, \Gamma)$ and $(Y, \Delta)$, a function $f: X\to Y$ is \emph{continuous at a point} $x\in X$ if for every $U\in\Delta$ with $f(x)\in \Delta$ (that is, for every open set containing $f(x)$) there is some $T\in \Gamma$ such that $x\in T$ and $f(T)\sub U$.
+
+Then we say $f$ is \emph{continuous} if it is continuous at all $x\in X$.
+\end{defn}
+
+\begin{defn}
+Let $I$ be the unit interval, $[0, 1]$.
+A \emph{path} in $X$ (with an associated topology) is a continuous map $f: I\to X$.
+\end{defn}
+
+We assume that any given topological space is connected -- that is, that for all $a, b\in X$, there exists a path $f$ such that $f(0) = a$ and $f(1) = b$.
+We also assume all maps are continuous unless otherwise noted.
+
+Two paths $f, g$ are \emph{equivalent} if there is a homotopy between them.
+That is, if there exists some $H: I\times I\to X$, such that $H(0, s) = f(s)$, $H(1, s) = g(s)$, and $H$ has fixed endpoints, so $H(t, 0) = a$ and $H(t, 1) = b$ for some $a, b\in X$.
+
+\begin{defn}
+A \emph{loop} is a path $f: I\to X$ such that $f(0) = f(1)$.
+\end{defn}
+
+Note that we can also write a loop as a function from $(S^1, y)$ to $(X, x)$, with $f(y) = x$ fixing the base point.
+
+Given two paths, with one starting at the endpoint of the other, we can compose them.
+
+\begin{defn}
+Given paths $f, g$ with $f(1) = g(0)$, we define $fg: I\to X$ by
+$$fg(t) = \begin{cases}f(2t) & t\leq 0.5\\ g(2t-1) & t > 0.5\end{cases}$$
+\end{defn}
+
+We can then compose all loops with some fixed base point $x$.
+This gives a group structure on the loops with base point $x$, with composition as defined, the inverse of $f$ given by $f^{-1}: t\mapsto f(1-t)$ and identity $e: t\mapsto x$.
+
+\begin{exer}
+Show that this is a group: that the identity and inverse are as described, and that composition is associative.
+\end{exer}
+
+\begin{defn}
+The \emph{fundamental group} or \emph{first homotopy group} of a topological space $X$ and point $x\in X$, $\pi_1(X, x)$, is the group of loops with base point $x$.
+\end{defn}
+
+We give two examples of the fundamental group.
+
+\begin{example}
+Consider $\pi_1(\RR^2, 0)$.
+This topological space has trivial fundamental group, as for any loop $f$ with base point 0, $H(s, t) = sf(t)$ is a homotopy from the trivial loop to $f$.
+\end{example}
+
+\begin{example}
+The fundamental group of $(S^1, \Gamma)$, the circle, is more interesting.
+It is given by the free group on one generator, which is the loop around the circle, so is isomorphic to $\ZZ$.
+\end{example}
+
+\section{The Second Homotopy Group}
+
+We also (somewhat more informally) can define the second homotopy group.
+Consider the embeddings of $(S^2, y)$ in a topological space with base point $(X, x)$.
+
+Note that we can also write these maps as having domain $I\times I$ with the restriction that the boundary of $I\times I$ is sent to $x$.
+Then we can compose two of these maps as follows:
+
+Given two maps $f, g: I\times I\to X$, each sending the boundary of the unit square to $x$, we have
+$$fg(x, y) = \begin{cases}
+		f(x, 2y) & y\leq 0.5\\
+		g(x, 2y-1) & y > 0.5
+	\end{cases}$$
+The inverse of a map $f: I\times I\to X$ is given by $f^{-1}: (x, y)\mapsto f(1-x, y)$.
+
+Now, unlike $\pi_1$, $\pi_2$ is abelian!
+(The Eckmann-Hilton argument shown was heavily picture based so I haven't typed it up well; this is very sketchy and elaboration would be awesome!)
+The proof given could in fact be used to construct $\ZZ$ distinct proofs, as it relied on rotating the domain of $f$ around the domain of $g$ within a square, which can be done multiple times.
+So in fact, the homotopy type of the number of proofs that $\pi_2$ is abelian is $\ZZ$.
+
+\begin{exer}
+Formalise this definition of $\pi_2$, showing the inverse is as claimed, and show it is associative and abelian.
+\end{exer}
+
+\begin{example}
+As with $\pi_1(S^1)$, $\pi_2(S^2)$ is the free group on one generator (which is the identity map on $S^2$) so is isomorphic to $\ZZ$.
+In fact, in general $\pi_n(S^n)$ is the free group with one generator: the identity map on $S^n$.
+\end{example}
+
+\begin{example}
+Also, $\pi_3(S^2)$ is isomorphic to $\ZZ$.
+(Teaser for some future week: this is equivalent to the homotopy type of the number of proofs that $\pi_2$ is abelian being $\ZZ$! By this logic, as $\pi_4(S^3)$ is isomorphic to $\ZZ_2$, there should be two distinct proofs that $\pi_3$ is abelian.)
+\end{example}
+
+Another way of conceptualising $\pi_2$ (and an approach that is much easier to deal with algorithmically) is to consider \emph{groupoids}.
+
+\begin{defn}
+A \emph{groupoid} is a category where all the morphisms are invertible.
+
+Equivalently, a groupoid is a set with a binary operation where all the elements have right and left labels, and $fg$ is defined only if the right label of $f$ is the same as the left label of $g$.
+\end{defn}
+
+(The image I had in my head of how a groupoid works was of paths in a graph -- which I think is basically the same as the category definition -- where you're interested in the structure created by these paths, with operation joining two paths.)
+
+\begin{defn}
+The \emph{fundamental 2-groupoid} in a topological space $X$ is a 3-layer object, given as follows:
+\begin{enumerate}[start=0]
+\item The 0-layer is all points in $X$,
+\item The 1-layer is all paths between points (\underline{not} quotiented out by homotopy), and
+\item The 2-layer is all paths between the paths in the 1-layer, up to homotopy.
+\end{enumerate}
+\end{defn}
+
+Then $\pi_2$ is a piece of the fundamental 2-groupoid: restrict the 0-layer to just one point, then take the resulting 2-layer.
+
+\section{CW-complexes}
+
+We can build interesting topological objects from simple ones.
+For example, the torus can be constructed from one copy of $D^0$, two of $D^1$ and one of $D^2$ glued in a certain way.
+
+A CW-complex (also known as a cell complex) is a topological object that can be build from various $D^n$ (we call $D^n$ an $n$-cell).
+We do this iteratively as follows:
+
+Let $X^0$ be some number of copies of $D^0$.
+Then we define $X^i$ by
+$$X^i = (X^{i-1}\cup \bigcup_{\alpha} D_{\alpha}^i)/\{\phi_\alpha^i\}$$
+where $\phi_\alpha^i: \del D_\alpha^i\to X^{i-1}$.
+
+So for the torus, $X_0$ is one copy of $D^0$, $X_1$ is a point with two loops from it, and $X_2$ is the torus.
+
+CW-complexes have lots of nice properties, and close to every interesting topological object can either be written as one, or replaced by one with the same homotopy groups.
+For example, we can calculate $\pi_1$ relatively simply from such a construction.
+Also, it is easy to tell when two CW-complexes are homotopy equivalent:
+
+\begin{defn}
+	We say two topological spaces $X, Y$ are \emph{homotopy equivalent} if there exists some $f: X\to Y$ and $g: Y\to X$ such that $f\of g$ and $g\of f$ are both homotopic to $\operatorname{id}$.
+\end{defn}
+
+\begin{thm}[Whitehead]
+	Let $X, Y$ be CW-complexes, with $f: X\to Y$ inducing an isomorphism on all homotopy groups of $X$ and $Y$.
+	Then $f$ gives a homotopy equivalence between the two spaces.
+\end{thm}
+
+We can construct $\pi_1$ of the torus from its CW-complex construction.
+We have $\pi_1(X_0)$ trivial, as $X_0$ is a point.
+Then $\pi_1(X_1)$ is the free group on 2 generators as $X_1$ is two loops.
+However, adding a copy of $D^2$ adds the relation $aba^{-1}b^{-1}$, so this is the abelian group on 2 generators, which is $\ZZ\oplus\ZZ$. 
+
+\begin{thm}
+	Given a CW-complex $X$, $\pi_1(X)$ is the same as the fundamental group of its 2-skeleton.
+	In general, $\pi_n(X)$ is the same as $\pi_n$ of its $(n-1)$-skeleton.
+\end{thm}
+
+Next, we consider building the projective plane as a CW-complex.
+This is not so easy to visualise or draw!
+
+\begin{defn}
+The \emph{projective plane} in two dimensions is $S^2$ quotiented by identifying pairs of opposite points.
+\end{defn}
+
+First, consider building the sphere as a cell complex.
+(Again, this is easier to draw than describe.)
+
+We have $X^0$ being a pair of points, then we add two copies of $D^1$ for $X^1$ to give a circle with two marked points, then we add two copies of $D^2$ for $X^2$: one for each hemisphere.
+
+For the projective plane, we instead start with one point for $X^0$ (as the pair of points in the sphere are opposite each other so would be identified).
+We then add one copy of $D^1$ to form a loop with one marked point for $X^1$, then add two copies of $D^2$ to this for $X^2$, which each connect to the loop by wrapping around twice.
+This is the projective plane.
+
+Building up the fundamental group, we have $\pi_1(X^0)$ trivial, then $\pi_1(X^1)$ is the free group on one generator $u$ (as we have only one loop to traverse) which is $\ZZ$.
+Finally, adding the copies of $D^2$ adds the relation $u^2$, so we get $\ZZ_2$.
+
+\begin{thm}
+Every group is the fundamental group of some CW-complex.
+\end{thm}
+
+The proof is constructive. It looks like adding one loop for each generator, then adding 2-cells to induce relations.
+
+This method also allows us to `truncate' the homotopy groups past $\pi_N$, making them trivial for all $\pi_n$ with $n > N$.
+We just add high-dimensional cells to kill the generators of these higher homotopy groups.
+This may require an infinite number of additional cells, but note we will be able to map the original cell complex into the constructed one.
+(Apologies for how vague that got!)
+\end{document}
+
