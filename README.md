@@ -18,9 +18,8 @@ Resources
 
 * The [Homotopy type theory book](https://homotopytypetheory.org/book/).
 * A [course on HoTT at Carnegie-Mellon](http://www.cs.cmu.edu/~rwh/courses/hott/), including video lectures.
-
 * We will put up notes from each week's discussion here. Anyone who has notes, either handwritten or TeX'd can send them to Scott, or send a pull request, or ask for commit access.
-** Currently we just have the email from the organisational meeting. Adele has notes from Feb 22?
+    * Currently we just have the email from the organisational meeting. Adele has notes from Feb 22?
 * Let's try using the issues page here on github to keep track of questions we'd like to collectively think about. Scott has put up a first example, about the space of proofs that fg = gf in \pi_2(X). Please feel free to put anything up here, including basic questions asking for clarifications.
 
 Interactive theorem proving
