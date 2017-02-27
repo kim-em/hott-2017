@@ -18,6 +18,7 @@ Resources
 
 * The [Homotopy type theory book](https://homotopytypetheory.org/book/).
 * A [course on HoTT at Carnegie-Mellon](http://www.cs.cmu.edu/~rwh/courses/hott/), including video lectures.
+* A series of [introductory lectures at the IAS](https://video.ias.edu/univalent/); the lecture by Awodey is particularly nice as there is someone with a very strong French accent (Deligne?) in the audience intent on asking very naive questions.
 * We will put up notes from each week's discussion here. Anyone who has notes, either handwritten or TeX'd can contribute them.
     * Week 1
         * [the email summarising the organisational meeting](https://github.com/semorrison/hott-2017/blob/master/notes/week-1/organisational-meeting.md)
