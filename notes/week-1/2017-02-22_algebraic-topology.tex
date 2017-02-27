@@ -165,9 +165,15 @@ Also, it is easy to tell when two CW-complexes are homotopy equivalent:
 \end{defn}
 
 \begin{thm}[Whitehead]
-	Let $X, Y$ be CW-complexes, with $f: X\to Y$ inducing an isomorphism on all homotopy groups of $X$ and $Y$.
+	Let $X, Y$ be CW-complexes, with $f: X\to Y$ inducing an isomorphism $\pi_n(X, x_0) \to \pi_n(Y, f(x_0))$ for all $n \geq 0$ and all basepoints $x_0 \in X$.
 	Then $f$ gives a homotopy equivalence between the two spaces.
 \end{thm}
+
+One can find counterexamples to the idea that merely having isomorphic homotopy groups ensures homotopy equivalence. Vigleik suggests:
+\begin{quote}
+I think the easiest example is $X = S^2$ and $Y = \CC P^\infty \times S^3$. It follows from the Hopf fibration $S^1 \to S^3 \to S^2$ (because a fibration induces a long exact sequence of homotopy groups) that $\pi_i S^3 = \pi_i S^2$ for $i \geq 3$ while $\pi_2 S^2 = \ZZ$. We also have $\pi_2 \CC P^\infty = \ZZ$ and $\pi_i \CC P^\infty = 0$ otherwise (use the fibration $S^1 \to S^\infty \to \CC P^\infty$ and the fact that $S^\infty$ is contractible). But these spaces are obviously not homotopy equivalent because their homology groups are very different.
+\end{quote}
+
 
 We can construct $\pi_1$ of the torus from its CW-complex construction.
 We have $\pi_1(X_0)$ trivial, as $X_0$ is a point.
@@ -176,7 +182,7 @@ However, adding a copy of $D^2$ adds the relation $aba^{-1}b^{-1}$, so this is t
 
 \begin{thm}
 	Given a CW-complex $X$, $\pi_1(X)$ is the same as the fundamental group of its 2-skeleton.
-	In general, $\pi_n(X)$ is the same as $\pi_n$ of its $(n-1)$-skeleton.
+	In general, $\pi_n(X)$ is the same as $\pi_n$ of its $(n+1)$-skeleton.
 \end{thm}
 
 Next, we consider building the projective plane as a CW-complex.
@@ -206,7 +212,6 @@ The proof is constructive. It looks like adding one loop for each generator, the
 
 This method also allows us to `truncate' the homotopy groups past $\pi_N$, making them trivial for all $\pi_n$ with $n > N$.
 We just add high-dimensional cells to kill the generators of these higher homotopy groups.
-This may require an infinite number of additional cells, but note we will be able to map the original cell complex into the constructed one.
-(Apologies for how vague that got!)
+This may require an infinite number of additional cells (although finitely many in each degree), but note we will be able to map the original cell complex into the truncation.
 \end{document}
 
