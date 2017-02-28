@@ -5,7 +5,7 @@ Plans
 ---
 
 * Florrie will give us a crash course on type theory on Wednesday March 1.
-* Max will explain to us what a fibration is, and what the path lifting property is.
+* Max will explain to us what a fibration is, and what the path lifting property is ([notes](https://github.com/semorrison/hott-2017/blob/master/notes/week-1/fibrations.tex))
 
 Requests
 ---
@@ -18,6 +18,7 @@ Resources
 
 * The [Homotopy type theory book](https://homotopytypetheory.org/book/).
 * A [course on HoTT at Carnegie-Mellon](http://www.cs.cmu.edu/~rwh/courses/hott/), including video lectures.
+* A series of [introductory lectures at the IAS](https://video.ias.edu/univalent/).
 * We will put up notes from each week's discussion here. Anyone who has notes, either handwritten or TeX'd can contribute them.
     * Week 1
         * [the email summarising the organisational meeting](https://github.com/semorrison/hott-2017/blob/master/notes/week-1/organisational-meeting.md)

@@ -1,0 +1,114 @@
+\documentclass[11pt]{article}
+\usepackage{tikz-cd}
+\usepackage{amsthm,amssymb}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\dash}{^{\prime}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{exercise}{Exercise}
+\newtheorem{definition}{Definition}
+
+\title{Note on Fibrations}
+\author{Maxim Jeffs}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Fibre Bundles}
+
+To gain some intuition for the geometry of fibrations, it may be helpful to first review the notion of a \textit{fibre bundle} (also called a \textit{fiber bundle}). A fibre bundle over a \textit{base space} $B$ with \textit{fibre} $F$ is a space $E$ (called the \textit{total space}) along with a surjective map $\pi: E \to B$ such that $E$ looks like a continuous family of $F$s parametrised by $B$. More precisely, there must exist an open cover $\{U_{\alpha}\}$ of $B$ and homeomorphisms $\phi_{\alpha} : \pi^{-1}(U_{\alpha}) \to U_{\alpha} \times F$ that preserve fibres. 
+
+\begin{center}
+\textit{insert picture here}
+\end{center}
+
+The most important example of a fibre bundle is the \textit{trivial bundle} $E = B \times F$; all fibre bundles locally appear trivial. The simplest non-trivial fibre bundle is the M\"obius bundle, the line bundle over the circle with total space given by the `M\"obius band'. The \textit{Hopf fibration} $S^3 \to S^2$ was mentioned last week; the fibre is given by the circle $S^1$, regarded as the unit complex numbers $U(1)$.
+
+A key property of fibre bundles is the following:
+
+\begin{theorem} 
+(Homotopy Lifting Property) Suppose $Y$ is a CW complex, and let $h: Y \times I \to B$ be a given homotopy between maps $f,g: Y \to B$. Then, given any lift of the map $f: Y \times \{0\} \to B$ to a map $\tilde{f}: Y \times \{0\} \to B$, there exists a lift of the homotopy $\tilde{h}: Y \times I \to E$ with $\tilde{h}$ restricted to $Y \times \{0\}$ equal to $\tilde{f}$. 
+\end{theorem}
+We say that a fibre bundle has the \textit{homotopy lifting property} (HLP) with respect to all CW complexes $Y$. This theorem may be equivalently phrased as saying that in any commutative diagram of the form below, there exists a dashed arrow that makes the diagram commute.
+\begin{center}
+\begin{tikzcd}
+Y \times \{0\} \arrow{r} \arrow{d}{\iota} & E \arrow{d}{\pi} \\
+Y \times I \arrow{r}{h}\arrow[dashed]{ur}{\exists} & B
+\end{tikzcd}
+\end{center}
+
+When $Y = \ast$, then this result simply states that paths can be lifted to the total space from the base space, a fact that should be intuitively clear.
+\begin{center}
+\textit{insert picture here}
+\end{center}
+
+\section*{Fibrations}
+
+A fibration should be thought of as a homotopy theorists' fibre bundle, a space that satisfies the above definition only up to homotopy equivalence, rather than homeomorphisms. Rather than making this a definition, a (Serre) fibration is simply defined to be a surjection $\pi: E \to B$ satisfying the conclusion of Theorem 1:
+\begin{definition}
+A fibration is a surjective map $\pi: E \to B$  that has the homotopy lifting property with respect to all CW complexes $Y$. 
+\end{definition}
+The related notion of a \textit{Hurewicz fibration} is defined to be a map $\pi : E \to B$ having the HLP with respect to \textit{all} spaces $Y$. 
+
+Evidently, all fibre bundles are Serre fibrations; fibre bundles over `paracompact' base spaces are also Hurewicz fibrations. It is also clear from this definition that all covering spaces are fibrations, since they satisfy the HLP but with a \textit{unique} lift of every homotopy. Another example that will be of importance later is the \textit{path fibration}. If $(X,x_0)$ is a path-connected space, then the set $PX$ of maps $\gamma: I \to X$ with $\gamma(0) = x_0$ can be given a topology in such a way that the map $PX \to X$ given by $\gamma \mapsto \gamma(1)$ is a fibration. This is called the \textit{path-loop fibration} because the homotopy fibre over the basepoint $x_0$ is the loopspace $\Omega X$.
+
+A fibration $\pi: E \to B$ has a well-defined `homotopy fibre' whenever $B$ is path-connected, that is, all of the spaces $\pi^{-1}(b)$ are homotopy equivalent. To see this, let $b, b\dash$ be two points in $B$, take $f: \pi\inv(b) \to E$ be the inclusion of the fibre $\pi^{-1}(b) \to E$, and take a path $\gamma$ from $b$ to $b\dash$. Then we have a lift in the diagram
+\begin{center}
+\begin{tikzcd}
+\pi\inv(b) \times \{0\} \arrow{r} \arrow{d}{\iota} & E \arrow{d}{\pi} \\
+\pi\inv(b) \times I \arrow{r}{\gamma}\arrow[dashed]{ur}{\exists} & B
+\end{tikzcd}
+\end{center}
+which yields a map $\pi\inv(b) \to \pi\inv(b\dash)$. A homotopy inverse is given by taking the lift associated to the reversed path.
+
+\begin{exercise}
+Fill in the rest of this proof.
+\end{exercise}
+
+The key property of fibrations is given by the following theorem. Recall that a sequence $A \to B \to C$ of group homomorphisms is \textit{exact} if the image of each map is equal to the kernel of the next. We have
+\begin{theorem}
+Suppose $\pi: E \to B$ is a fibration with homotopy fibre $F$. Then there exists a long exact sequence in homotopy groups
+\begin{center}
+\begin{tikzcd}
+ \cdots \arrow{r} & \pi_n(F) \arrow{r} & \pi_n(E) \arrow{r} & \pi_n(B) \arrow{r} & \pi_{n-1}(F) \arrow{r} & \cdots
+\end{tikzcd}
+\end{center}
+\end{theorem}
+
+\begin{exercise}
+Use the long exact sequence in homotopy groups for the Hopf fibration to show that $\pi_3(S^2) \cong \mathbb{Z}$. 
+\end{exercise}
+
+\section*{Appendix: Equivalent Definitions}
+
+There are a number of equivalent definitions of a Serre fibration that are easier to verify and more theoretically important.
+
+\begin{definition}
+We say that a map $\pi: E \to B$ has the right lifting property (RLP) with respect to the pair $(X,A)$ if there exists a lift in the diagram:
+\begin{center}
+\begin{tikzcd}
+A \arrow{r} \arrow{d}{\iota} & E \arrow{d}{\pi} \\
+X \arrow{r}{h}\arrow[dashed]{ur}{\exists} & B
+\end{tikzcd}
+\end{center}
+\end{definition}
+
+We also say that a fibration $\pi: E \to B$ is \textit{acyclic} if the homotopy fibre is contractible. By the long exact sequence in homotopy groups, this means that $\pi$ induces a weak homotopy equivalence between $E$ and $B$.
+
+\begin{theorem}
+For a surjective map $\pi: E \to B$, the following are equivalent:
+\begin{enumerate}
+\item the map $\pi$ has the RLP with respect to all $(Y \times I, Y \times \{0\})$ for $Y$ CW;
+\item the map $\pi$ has the RLP with respect to $(D^n \times I, D^n \times \{0\})$ for all $n \geq 1$;
+\item the map $\pi$ has the RLP with respect to $(X \times I, X\times \{0\} \sqcup A \times I)$ for all CW pairs $(X,A)$;
+\end{enumerate}
+Moreover, if $\pi$ is acyclic, then these are equivalent to the RLP with respect to all CW pairs $(X,A)$.
+\end{theorem}
+
+The latter statement may be interpreted as saying that the Quillen model structure on $\mathbf{Top}$ is cofibrantly generated by the CW inclusions. This leads in to the more general notion of a fibration in a \textit{model category}.
+
+
+
+\end{document}
