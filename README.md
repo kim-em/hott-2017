@@ -5,7 +5,7 @@ Plans
 ---
 
 * Florrie will give us a crash course on type theory on Wednesday March 1.
-* Max will explain to us what a fibration is, and what the path lifting property is.
+* Max will explain to us what a fibration is, and what the path lifting property is ([notes](https://github.com/semorrison/hott-2017/blob/master/notes/week-1/fibrations.tex)))
 
 Requests
 ---
