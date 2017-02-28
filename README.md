@@ -39,4 +39,4 @@ Homotopy type theorists like to use computer proof assistants (aka interactive t
 
 Coq is probably the best option for now. It is easy to install, but we need someone to also install the HoTT library, and then explain to all of us how to do that. Please send Scott an email (or even better a pull request here)!
 
-(Agda is apparently less pleasant to use. Lean has some great features --- please talk to Scott if you're interested in learning Lean! --- but currently support for homotopy type theory is broken.)
+(Agda is apparently less pleasant to use. Lean has some great features --- please talk to Scott if you're interested in learning Lean! --- but support for homotopy type theory has been abandoned.)
