@@ -44,7 +44,7 @@ Let $I$ be the unit interval, $[0, 1]$.
 A \emph{path} in $X$ (with an associated topology) is a continuous map $f: I\to X$.
 \end{defn}
 
-We assume that any given topological space is connected -- that is, that for all $a, b\in X$, there exists a path $f$ such that $f(0) = a$ and $f(1) = b$.
+We assume that any given topological space is path connected -- that is, that for all $a, b\in X$, there exists a path $f$ such that $f(0) = a$ and $f(1) = b$.
 We also assume all maps are continuous unless otherwise noted.
 
 Two paths $f, g$ are \emph{equivalent} if there is a homotopy between them.
@@ -64,14 +64,14 @@ $$fg(t) = \begin{cases}f(2t) & t\leq 0.5\\ g(2t-1) & t > 0.5\end{cases}$$
 \end{defn}
 
 We can then compose all loops with some fixed base point $x$.
-This gives a group structure on the loops with base point $x$, with composition as defined, the inverse of $f$ given by $f^{-1}: t\mapsto f(1-t)$ and identity $e: t\mapsto x$.
+This gives a group structure on the loops with base point $x$ up to homotopy equivalence, with composition as defined, the inverse of $f$ given by $f^{-1}: t\mapsto f(1-t)$ and identity $e: t\mapsto x$.
 
 \begin{exer}
 Show that this is a group: that the identity and inverse are as described, and that composition is associative.
 \end{exer}
 
 \begin{defn}
-The \emph{fundamental group} or \emph{first homotopy group} of a topological space $X$ and point $x\in X$, $\pi_1(X, x)$, is the group of loops with base point $x$.
+The \emph{fundamental group} or \emph{first homotopy group} of a topological space $X$ and point $x\in X$, $\pi_1(X, x)$, is the group of loops with base point $x$ up to homotopy equivalence.
 \end{defn}
 
 We give two examples of the fundamental group.
@@ -99,12 +99,12 @@ $$fg(x, y) = \begin{cases}
 		f(x, 2y) & y\leq 0.5\\
 		g(x, 2y-1) & y > 0.5
 	\end{cases}$$
-The inverse of a map $f: I\times I\to X$ is given by $f^{-1}: (x, y)\mapsto f(1-x, y)$.
+The inverse of a map $f: I\times I\to X$ in the group structure of $pi_2$ is given by $g: (x, y)\mapsto f(1-x, y)$.
 
 Now, unlike $\pi_1$, $\pi_2$ is abelian!
 (The Eckmann-Hilton argument shown was heavily picture based so I haven't typed it up well; this is very sketchy and elaboration would be awesome!)
 The proof given could in fact be used to construct $\ZZ$ distinct proofs, as it relied on rotating the domain of $f$ around the domain of $g$ within a square, which can be done multiple times.
-So in fact, the homotopy type of the number of proofs that $\pi_2$ is abelian is $\ZZ$.
+So in fact, the homotopy type of the type of proofs that $\pi_2$ is abelian is $\ZZ$.
 
 \begin{exer}
 Formalise this definition of $\pi_2$, showing the inverse is as claimed, and show it is associative and abelian.
@@ -117,7 +117,7 @@ In fact, in general $\pi_n(S^n)$ is the free group with one generator: the ident
 
 \begin{example}
 Also, $\pi_3(S^2)$ is isomorphic to $\ZZ$.
-(Teaser for some future week: this is equivalent to the homotopy type of the number of proofs that $\pi_2$ is abelian being $\ZZ$! By this logic, as $\pi_4(S^3)$ is isomorphic to $\ZZ_2$, there should be two distinct proofs that $\pi_3$ is abelian.)
+(Teaser for some future week: this is equivalent to the homotopy type of the type of proofs that $\pi_2$ is abelian being $\ZZ$! By this logic, as $\pi_4(S^3)$ is isomorphic to $\ZZ_2$, there should be two distinct proofs that $\pi_3$ is abelian.)
 \end{example}
 
 Another way of conceptualising $\pi_2$ (and an approach that is much easier to deal with algorithmically) is to consider \emph{groupoids}.
@@ -154,7 +154,7 @@ Then we define $X^i$ by
 $$X^i = (X^{i-1}\cup \bigcup_{\alpha} D_{\alpha}^i)/\{\phi_\alpha^i\}$$
 where $\phi_\alpha^i: \del D_\alpha^i\to X^{i-1}$.
 
-So for the torus, $X_0$ is one copy of $D^0$, $X_1$ is a point with two loops from it, and $X_2$ is the torus.
+So for the torus, $X^0$ is one copy of $D^0$, $X^1$ is a point with two loops from it, and $X^2$ is the torus.
 
 CW-complexes have lots of nice properties, and close to every interesting topological object can either be written as one, or replaced by one with the same homotopy groups.
 For example, we can calculate $\pi_1$ relatively simply from such a construction.
@@ -176,13 +176,13 @@ I think the easiest example is $X = S^2$ and $Y = \CC P^\infty \times S^3$. It f
 
 
 We can construct $\pi_1$ of the torus from its CW-complex construction.
-We have $\pi_1(X_0)$ trivial, as $X_0$ is a point.
-Then $\pi_1(X_1)$ is the free group on 2 generators as $X_1$ is two loops.
+We have $\pi_1(X^0)$ trivial, as $X^0$ is a point.
+Then $\pi_1(X^1)$ is the free group on 2 generators as $X^1$ is two loops.
 However, adding a copy of $D^2$ adds the relation $aba^{-1}b^{-1}$, so this is the abelian group on 2 generators, which is $\ZZ\oplus\ZZ$. 
 
 \begin{thm}
-	Given a CW-complex $X$, $\pi_1(X)$ is the same as the fundamental group of its 2-skeleton.
-	In general, $\pi_n(X)$ is the same as $\pi_n$ of its $(n+1)$-skeleton.
+	Given a CW-complex $X$, $\pi_1(X)$ is the same as the fundamental group of its 2-skeleton (that is, $X^2$ in the notation we are using).
+	In general, $\pi_n(X)$ is the same as $\pi_n$ of its $(n+1)$-skeleton ($X^{n+1}$).
 \end{thm}
 
 Next, we consider building the projective plane as a CW-complex.
@@ -214,4 +214,5 @@ This method also allows us to `truncate' the homotopy groups past $\pi_N$, makin
 We just add high-dimensional cells to kill the generators of these higher homotopy groups.
 This may require an infinite number of additional cells (although finitely many in each degree), but note we will be able to map the original cell complex into the truncation.
 \end{document}
+
 
